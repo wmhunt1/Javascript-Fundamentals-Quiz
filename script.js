@@ -18,7 +18,6 @@ function setTime()
     {
       seconds_left--;
       document.getElementById("time").innerHTML = seconds_left + " seconds left..";
-      console.log(seconds_left)
   
       if(seconds_left === 0)
        {
@@ -38,13 +37,19 @@ function jsQuiz()
     document.getElementById("quiz_section").style.display = "block"
     document.getElementById("score_section").style.display = "none"  
     quiz_question()
-    //final_score()
 }
 //question function
 function quiz_question()
 { 
-    document.getElementById("question").innerHTML = questionArray[current_question];
-    document.getElementById("option").innerHTML = optionArray[current_question];
+    if(current_question == questionArray.length)
+    {
+        final_score()
+    }
+    else
+    {
+        document.getElementById("question").innerHTML = questionArray[current_question];
+        document.getElementById("option").innerHTML = optionArray[current_question];
+    }
 }
 //check answer function
 //sees if value from check answer button = value in answerArray
@@ -66,7 +71,6 @@ function correct_answer()
     r_snd.play();
     console.log("correct")
     score ++;
-    console.log(score)
     //moves to next question
     current_question ++;
 }
@@ -75,7 +79,6 @@ function wrong_answer()
 {
     w_snd.play();
     console.log("wrong")
-    console.log(score)
     //moves to next question
     current_question ++;
     //loses a second on a wrong answer
@@ -88,5 +91,5 @@ function final_score()
     document.getElementById("start_section").style.display = "none"
     document.getElementById("quiz_section").style.display = "none"
     document.getElementById("score_section").style.display = "block"
-    document.getElementById("final_score").innerHTML = score;
+    document.getElementById("final_score").innerHTML = "Your score is " + score + " Points.";
 }

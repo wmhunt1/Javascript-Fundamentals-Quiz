@@ -2,6 +2,8 @@
 
 A Javascript Fundamentals Quiz
 
+A timed quiz to test knowledge of Javascript and whether and compare scores against other players
+
 Questions and Options:
 Answers:
 
