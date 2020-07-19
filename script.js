@@ -8,6 +8,8 @@ var score = 0;
 var answered = false;
 var seconds_left = 60
 var current_question = 0;
+var r_snd = new Audio("Assets/ding.mp3")
+var w_snd = new Audio("Assets/wrong.mp3")
 
 //timer function
 function timer()
@@ -48,6 +50,7 @@ function check_answer(x)
 //correct answer function
 function correct_answer()
 {
+    r_snd.play();
     console.log("correct")
     score ++;
     console.log(score)
@@ -57,6 +60,7 @@ function correct_answer()
 //wrong answer function
 function wrong_answer()
 {
+    w_snd.play();
     console.log("wrong")
     console.log(score)
     current_question ++;
