@@ -149,8 +149,7 @@ function printHS()
     nameScores = localStorage.getItem('name-score');
     if (highScores != null && highScores.length > 0)
     {
-        //i is 1 to remove commas
-        for (var i = 1; i < highScores.length; i++)
+        for (var i = 0; i < highScores.length; i++)
         {
          
             var tag = document.createElement("p")
@@ -171,14 +170,12 @@ function submitHS()
     var name = document.getElementById("initials").value;
     console.log(score)
     console.log(name)
-    highScores.push(score)
-    nameScores.push(name)
+    highScores.fill(score)
+    nameScores.fill(name)
     localStorage.setItem('high-score', highScores);
     localStorage.setItem('name-score', nameScores);
 }
-// function clear_stor()
-// {
-//     localStorage.clear();
-//     highScores = localStorage.getItem('high-score');
-//     nameScores = localStorage.getItem('name-score');
-// }
+function clear_stor()
+{
+    localStorage.clear();
+}
