@@ -112,6 +112,9 @@ function check_answer(x)
 //correct answer function
 function correct_answer()
 {
+    //resets SE
+    r_snd.currentTime = 0;
+    //plays SE
     r_snd.play();
     console.log("correct")
     score ++;
@@ -121,6 +124,9 @@ function correct_answer()
 //wrong answer function
 function wrong_answer()
 {
+    //resets SE
+    w_snd.currentTime = 0;
+    //plays SE
     w_snd.play();
     console.log("wrong")
     //moves to next question
