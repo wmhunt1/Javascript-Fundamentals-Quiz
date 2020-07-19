@@ -16,8 +16,9 @@
 </section>
 <section id = "quiz_section">
     <h2>Quiz</h2>
+    <p id = "time"></p>
     <p id = "question"></p>
-    <input id = answer>
+    <div id = "choices"></div>
 </section>
 <section id = "score_section">
     <p id = "final_score"></p>
@@ -27,6 +28,7 @@ document.getElementById("start_section").style.display = "block"
 document.getElementById("quiz_section").style.display = "none"
 document.getElementById("score_section").style.display = "none"
 document.getElementById("final_score").innerHTML = score;
+//document.getElementById("time").innerHTML = seconds_left + " seconds left.";
 </script>
 </body>
 </html>
