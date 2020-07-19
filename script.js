@@ -47,7 +47,7 @@ var optionArray =
     "A:= , B:== , C:=== , or D: ====",
     "A: ;, B: :, C: ,, or D: .",
 ]
-var answerArray = [1, 3, 4, 3, 1, 2, 3, 4, 2, 3, 1, 4, 1, 3, 4, 3, 4, 2, 3, 1]
+var answerArray = [1, 3, 4, 3, 1, 2, 3, 4, 2, 3, 1, 4, 1, 3, 4, 3, 4, 2, 3, 1];
 var score = 0;
 var answered = false;
 var seconds_left = 60
@@ -55,8 +55,8 @@ var current_question = 0;
 var r_snd = new Audio("Assets/ding.mp3")
 var w_snd = new Audio("Assets/wrong.mp3")
 
-var highScores = ["Test"]
-var nameScores = [5]
+var highScores = [""];
+var nameScores = [""];
 //timer function
 //took timer from Ins_Timer_Intervals
 function setTime() 
@@ -149,6 +149,8 @@ function final_score()
 }
 function printHS()
 {
+    highScores = localStorage.getItem('high-score');
+    nameScores = localStorage.getItem('name-score');
     for (var i = 0; i < highScores.length; i++)
     {
         var tag = document.createElement("p")
@@ -163,4 +165,6 @@ function submitHS()
     var name = document.getElementById("initials").value;
     highScores.push(score);
     nameScores.push(name);
+    localStorage.setItem('high-score', highScores);
+    localStorage.setItem('name-score', nameScores);
 }
