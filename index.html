@@ -13,17 +13,20 @@
 </header>
 <section id = "start_section">
     <button onclick = "jsQuiz()">Start Quiz</button>
-    <p id = "question_section"></p>
 </section>
-<section id = "quiz">
-    <p class = "time"></p>
+<section id = "quiz_section">
     <h2>Quiz</h2>
+    <p id = "question"></p>
+    <input>
 </section>
-<section id = "score_section"></section>
+<section id = "score_section">
+    <p id = "final_score"></p>
+</section>
 <script>
 document.getElementById("start_section").style.display = "block"
 document.getElementById("quiz_section").style.display = "none"
 document.getElementById("score_section").style.display = "none"
+document.getElementById("final_score").innerHTML = score;
 </script>
 </body>
 </html>
