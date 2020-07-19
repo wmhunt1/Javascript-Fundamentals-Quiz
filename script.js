@@ -2,10 +2,15 @@
 var questionArray = ["Question 1", "Question 2", "Question 3"]
 var answerArray = ["1", "2", "3"]
 var score = 0;
-var answered = 0;
+var answered = false;
 var seconds_left = 60
-var question = 0
+
 function jsQuiz()
+{
+    quiz_question()
+    final_score()
+}
+function quiz_question()
 {
     document.getElementById("start_section").style.display = "none"
     document.getElementById("quiz_section").style.display = "block"
@@ -18,20 +23,13 @@ function jsQuiz()
         {
             console.log("correct")
             score ++;
-            answered ++;
         }
         else
         {
             console.log("wrong")
-            answered ++;
-            seconds_left --;
+            //seconds_left --;
         }
     }
-    final_score()
-}
-function submit()
-{
-
 }
 function final_score()
 {
