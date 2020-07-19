@@ -54,6 +54,9 @@ var seconds_left = 60
 var current_question = 0;
 var r_snd = new Audio("Assets/ding.mp3")
 var w_snd = new Audio("Assets/wrong.mp3")
+
+var highScores = ["Test"]
+var nameScores = [5]
 //timer function
 //took timer from Ins_Timer_Intervals
 function setTime() 
@@ -142,4 +145,22 @@ function final_score()
     document.getElementById("quiz_section").style.display = "none"
     document.getElementById("score_section").style.display = "block"
     document.getElementById("final_score").innerHTML = "Your score is " + score + " Points.";
+    printHS()
+}
+function printHS()
+{
+    for (var i = 0; i < highScores.length; i++)
+    {
+        var tag = document.createElement("p")
+        var text = document.createTextNode(nameScores[i] + ": " + highScores[i])
+        tag.appendChild(text);
+        var element = document.getElementById("high_scores");
+        element.appendChild(tag);
+    }
+}
+function submitHS()
+{
+    var name = document.getElementById("initials").value;
+    highScores.push(score);
+    nameScores.push(name);
 }
