@@ -1,11 +1,13 @@
+//document.getElementById("question").innerHTML = "";
 //question array
-var questionArray = ["Question 1", "Question 2", "Question 3"]
-var answerArray = ["1", "2", "3"]
+var questionArray = ["Question 1", "Question 2"]
+var answerArray = [1, 2]
 var score = 0;
 var answered = false;
 var seconds_left = 60
-var answer = document.getElementById("answer").value;
+var current_question = 0;
 
+//quiz function
 function jsQuiz()
 {
     document.getElementById("start_section").style.display = "none"
@@ -16,14 +18,12 @@ function jsQuiz()
 }
 function quiz_question()
 { 
-    for (var i = 0; i < questionArray.length; i++)
-    {
-        document.getElementById("question").innerHTML = questionArray[i];
-    }
+    document.getElementById("question").innerHTML = questionArray[current_question];
+}
 //check answer function
-function check_answer()
+function check_answer(x)
 {
-    if (answer === answerArray[i])
+    if (x === answerArray[current_question])
     {
         correct_answer()
     }
@@ -31,17 +31,20 @@ function check_answer()
     {
         wrong_answer()
     }
+    quiz_question()
 }
 //correct answer function
 function correct_answer()
 {
     console.log("correct")
     score ++;
+    current_question ++;
 }
 //wrong answer function
 function wrong_answer()
 {
     console.log("wrong")
+    current_question ++;
 }
 //final score function
 function final_score()
