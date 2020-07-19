@@ -184,6 +184,14 @@ function submitHS()
     console.log(name)
     highScores.push(score);
     nameScores.push(name);
+    new_highScores = localStorage.getItem('high-score');
+    new_nameScores = localStorage.getItem('name-score');
     localStorage.setItem('high-score', highScores);
     localStorage.setItem('name-score', nameScores);
 }
+// function clear_stor()
+// {
+//     localStorage.clear();
+//     highScores = localStorage.getItem('high-score');
+//     nameScores = localStorage.getItem('name-score');
+// }
