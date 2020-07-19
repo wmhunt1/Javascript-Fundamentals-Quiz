@@ -55,8 +55,10 @@ var current_question = 0;
 var r_snd = new Audio("Assets/ding.mp3")
 var w_snd = new Audio("Assets/wrong.mp3")
 
-var highScores = [""];
-var nameScores = [""];
+let highScores = [""];
+let nameScores = [""];
+console.log(highScores)
+console.log(nameScores)
 //timer function
 //took timer from Ins_Timer_Intervals
 function setTime() 
@@ -145,24 +147,41 @@ function final_score()
     document.getElementById("quiz_section").style.display = "none"
     document.getElementById("score_section").style.display = "block"
     document.getElementById("final_score").innerHTML = "Your score is " + score + " Points.";
+    console.log(highScores)
+    console.log(nameScores)
     printHS()
 }
 function printHS()
 {
+    console.log(highScores)
+    console.log(nameScores)
     highScores = localStorage.getItem('high-score');
     nameScores = localStorage.getItem('name-score');
-    for (var i = 0; i < highScores.length; i++)
+    console.log(highScores)
+    console.log(nameScores)
+    if (highScores != null && highScores.length > 0)
     {
-        var tag = document.createElement("p")
-        var text = document.createTextNode(nameScores[i] + ": " + highScores[i])
-        tag.appendChild(text);
-        var element = document.getElementById("high_scores");
-        element.appendChild(tag);
+        //i is 1 to remove commas
+        for (var i = 1; i < highScores.length; i++)
+        {
+         
+            var tag = document.createElement("p")
+            var text = document.createTextNode("Initials: " + nameScores[i] + " score: " + highScores[i])
+            tag.appendChild(text);
+            var element = document.getElementById("high_scores");
+            element.appendChild(tag);
+        }
+    }
+    else
+    {
+
     }
 }
 function submitHS()
 {
     var name = document.getElementById("initials").value;
+    console.log(score)
+    console.log(name)
     highScores.push(score);
     nameScores.push(name);
     localStorage.setItem('high-score', highScores);
