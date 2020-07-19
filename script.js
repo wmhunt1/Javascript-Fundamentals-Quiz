@@ -1,4 +1,4 @@
-
+//var time = document.getElementById("time");
 //question array
 var questionArray = ["Question 1", "Question 2", "Question 3", "Question 4"]
 //answer array
@@ -10,17 +10,30 @@ var seconds_left = 60
 var current_question = 0;
 var r_snd = new Audio("Assets/ding.mp3")
 var w_snd = new Audio("Assets/wrong.mp3")
-
 //timer function
-function timer()
+//took timer from Ins_Timer_Intervals
+function setTime() 
 {
-    document.getElementById("time").innerHTML = seconds_left
+    var timerInterval = setInterval(function()
+    {
+      seconds_left--;
+      document.getElementById("time").innerHTML = seconds_left + " seconds left..";
+      console.log(seconds_left)
+  
+      if(seconds_left === 0)
+       {
+        clearInterval(timerInterval);
+        final_score()
+       }
+  
+    }, 1000);
 }
+
 //quiz function
 function jsQuiz()
 {
     
-    timer()
+    setTime()
     document.getElementById("start_section").style.display = "none"
     document.getElementById("quiz_section").style.display = "block"
     document.getElementById("score_section").style.display = "none"  
@@ -63,8 +76,11 @@ function wrong_answer()
     w_snd.play();
     console.log("wrong")
     console.log(score)
+    //moves to next question
     current_question ++;
+    //loses a second on a wrong answer
     seconds_left --;
+    document.getElementById("time").innerHTML = seconds_left + " seconds left..";
 }
 //final score function
 function final_score()
