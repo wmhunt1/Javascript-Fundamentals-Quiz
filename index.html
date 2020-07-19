@@ -11,10 +11,19 @@
 <header>
     <H1>Javascript FUNdamentals Quiz</H1>
 </header>
-<section id = "start"></section>
-<button onclick = "jsQuiz()">Start Quiz</button>
-<section id = "quiz"></section>
-<section id = "score"></section>
-    
+<section id = "start_section">
+    <button onclick = "jsQuiz()">Start Quiz</button>
+    <p id = "question_section"></p>
+</section>
+<section id = "quiz">
+    <p class = "time"></p>
+    <h2>Quiz</h2>
+</section>
+<section id = "score_section"></section>
+<script>
+document.getElementById("start_section").style.display = "block"
+document.getElementById("quiz_section").style.display = "none"
+document.getElementById("score_section").style.display = "none"
+</script>
 </body>
 </html>
