@@ -4,6 +4,9 @@ A Javascript Fundamentals Quiz
 
 A timed quiz to test knowledge of Javascript and whether and compare scores against other players
 
+github link: https://github.com/wmhunt1/Javascript-Fundamentals-Quiz
+deployed link: 
+
 Quiz (Question, answers, and then answer)
 "Question 1: Variables are the ____ of programming?"
 A: Nouns, B: Verbs, C: Adjectives , or D :Adverbs 

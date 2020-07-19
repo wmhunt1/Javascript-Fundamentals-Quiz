@@ -1,4 +1,3 @@
-//var time = document.getElementById("time");
 //question array
 var questionArray = 
 [
@@ -49,16 +48,14 @@ var optionArray =
 ]
 var answerArray = [1, 3, 4, 3, 1, 2, 3, 4, 2, 3, 1, 4, 1, 3, 4, 3, 4, 2, 3, 1];
 var score = 0;
-var answered = false;
 var seconds_left = 60
 var current_question = 0;
+//se
 var r_snd = new Audio("Assets/ding.mp3")
 var w_snd = new Audio("Assets/wrong.mp3")
-
-let highScores = [""];
-let nameScores = [""];
-console.log(highScores)
-console.log(nameScores)
+//hs arrays
+var highScores = [""];
+var nameScores = [""];
 //timer function
 //took timer from Ins_Timer_Intervals
 function setTime() 
@@ -76,7 +73,6 @@ function setTime()
   
     }, 1000);
 }
-
 //quiz function
 function jsQuiz()
 {
@@ -121,7 +117,6 @@ function correct_answer()
     r_snd.currentTime = 0;
     //plays SE
     r_snd.play();
-    console.log("correct")
     score ++;
     //moves to next question
     current_question ++;
@@ -133,7 +128,6 @@ function wrong_answer()
     w_snd.currentTime = 0;
     //plays SE
     w_snd.play();
-    console.log("wrong")
     //moves to next question
     current_question ++;
     //loses a second on a wrong answer
@@ -147,18 +141,12 @@ function final_score()
     document.getElementById("quiz_section").style.display = "none"
     document.getElementById("score_section").style.display = "block"
     document.getElementById("final_score").innerHTML = "Your score is " + score + " Points.";
-    console.log(highScores)
-    console.log(nameScores)
     printHS()
 }
 function printHS()
 {
-    console.log(highScores)
-    console.log(nameScores)
     highScores = localStorage.getItem('high-score');
     nameScores = localStorage.getItem('name-score');
-    console.log(highScores)
-    console.log(nameScores)
     if (highScores != null && highScores.length > 0)
     {
         //i is 1 to remove commas
@@ -179,13 +167,12 @@ function printHS()
 }
 function submitHS()
 {
+    //can't get the push to array to work
     var name = document.getElementById("initials").value;
     console.log(score)
     console.log(name)
-    highScores.push(score);
-    nameScores.push(name);
-    new_highScores = localStorage.getItem('high-score');
-    new_nameScores = localStorage.getItem('name-score');
+    highScores.push(score)
+    nameScores.push(name)
     localStorage.setItem('high-score', highScores);
     localStorage.setItem('name-score', nameScores);
 }
