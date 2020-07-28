@@ -131,7 +131,10 @@ function wrong_answer()
     //moves to next question
     current_question ++;
     //loses a second on a wrong answer
+    //looking at console log it looks like a second gets subtracted.
+    console.log(seconds_left + "before")
     seconds_left --;
+    console.log(seconds_left + "after")
     document.getElementById("time").innerHTML = seconds_left + " seconds left..";
 }
 //final score function
@@ -145,24 +148,20 @@ function final_score()
 }
 function printHS()
 {
-    highScores = localStorage.getItem('high-score');
-    nameScores = localStorage.getItem('name-score');
-    if (highScores != null && highScores.length > 0)
-    {
-        for (var i = 0; i < highScores.length; i++)
-        {
-         
-            var tag = document.createElement("p")
-            var text = document.createTextNode("Initials: " + nameScores[i] + " score: " + highScores[i])
-            tag.appendChild(text);
-            var element = document.getElementById("high_scores");
-            element.appendChild(tag);
-        }
-    }
-    else
-    {
-
-    }
+    var storedScores = localStorage.getItem('high-score');
+    if (storedScores !== null) {
+        highScores = storedScores;
+      }  
+    var storedName = localStorage.getItem('name-score');
+    if (storedName !== null && storedScores !== null) {
+        nameScores = storedNames;
+        highScores = storedScores;
+        var tag = document.createElement("p")
+        var text = document.createTextNode("Initials: " + nameScores[i] + " score: " + highScores[i])
+        tag.appendChild(text);
+        var element = document.getElementById("high_scores");
+        element.appendChild(tag);
+      }  
 }
 function submitHS()
 {
@@ -172,8 +171,10 @@ function submitHS()
     console.log(name)
     highScores.fill(score)
     nameScores.fill(name)
-    localStorage.setItem('high-score', highScores);
-    localStorage.setItem('name-score', nameScores);
+    localStorage.setItem("high-score", JSON.stringify(highScores));
+    localStorage.setItem("name-score", JSON.stringify(nameScores));
+    // localStorage.setItem('high-score', highScores);
+    // localStorage.setItem('name-score', nameScores);
 }
 function clear_stor()
 {
