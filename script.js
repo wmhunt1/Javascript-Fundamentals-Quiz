@@ -54,8 +54,8 @@ var current_question = 0;
 var r_snd = new Audio("Assets/ding.mp3")
 var w_snd = new Audio("Assets/wrong.mp3")
 //hs arrays
-var highScores = [""];
-var nameScores = [""];
+let highScores = [];
+let nameScores = [];
 //timer function
 //took timer from Ins_Timer_Intervals
 function setTime() 
@@ -148,33 +148,48 @@ function final_score()
 }
 function printHS()
 {
+    // var storedScores = localStorage.getItem('high-score');
+    // var storedNames = localStorage.getItem('name-score');
+    // if (storedNames !== null && storedScores !== null) 
+    // {
+    //     nameScores = storedNames;
+    //     highScores = storedScores;
+    //     console.log(nameScores)
+    //     console.log(highScores)
+        loadHS()
+        for (var i = 0; i < highScores.length; i++)
+        {
+            var tag = document.createElement("p")
+            var text = document.createTextNode("Initials: " + nameScores[i] + " score: " + highScores[i])
+            tag.appendChild(text);
+            var element = document.getElementById("high_scores");
+            element.appendChild(tag);
+        }
+    //   }  
+}
+function loadHS()
+{
     var storedScores = localStorage.getItem('high-score');
-    if (storedScores !== null) {
-        highScores = storedScores;
-      }  
-    var storedName = localStorage.getItem('name-score');
-    if (storedName !== null && storedScores !== null) {
+    var storedNames = localStorage.getItem('name-score');
+    if (storedNames !== null && storedScores !== null) 
+    {
         nameScores = storedNames;
         highScores = storedScores;
-        var tag = document.createElement("p")
-        var text = document.createTextNode("Initials: " + nameScores[i] + " score: " + highScores[i])
-        tag.appendChild(text);
-        var element = document.getElementById("high_scores");
-        element.appendChild(tag);
-      }  
+        console.log(nameScores)
+        console.log(highScores)
+    }
 }
 function submitHS()
 {
     //can't get the push to array to work
+    loadHS()
     var name = document.getElementById("initials").value;
     console.log(score)
     console.log(name)
-    highScores.fill(score)
-    nameScores.fill(name)
+    highScores.push('score');
+    nameScores.push('name');
     localStorage.setItem("high-score", JSON.stringify(highScores));
     localStorage.setItem("name-score", JSON.stringify(nameScores));
-    // localStorage.setItem('high-score', highScores);
-    // localStorage.setItem('name-score', nameScores);
 }
 function clear_stor()
 {
