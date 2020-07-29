@@ -1,4 +1,5 @@
 //question array
+var namesInput = document.getElementById("initials");
 var questionArray = 
 [
     "Question 1: Variables are the ____ of programming?", 
@@ -54,8 +55,8 @@ var current_question = 0;
 var r_snd = new Audio("Assets/ding.mp3")
 var w_snd = new Audio("Assets/wrong.mp3")
 //hs arrays
-let highScores = [];
-let nameScores = [];
+var highScores = [];
+var nameScores = [];
 //timer function
 //took timer from Ins_Timer_Intervals
 function setTime() 
@@ -148,24 +149,16 @@ function final_score()
 }
 function printHS()
 {
-    // var storedScores = localStorage.getItem('high-score');
-    // var storedNames = localStorage.getItem('name-score');
-    // if (storedNames !== null && storedScores !== null) 
-    // {
-    //     nameScores = storedNames;
-    //     highScores = storedScores;
-    //     console.log(nameScores)
-    //     console.log(highScores)
-        loadHS()
-        for (var i = 0; i < highScores.length; i++)
-        {
-            var tag = document.createElement("p")
-            var text = document.createTextNode("Initials: " + nameScores[i] + " score: " + highScores[i])
-            tag.appendChild(text);
-            var element = document.getElementById("high_scores");
-            element.appendChild(tag);
-        }
-    //   }  
+    loadHS()
+    for (var i = 0; i < highScores.length; i++)
+    {
+        var tag = document.createElement("p")
+        var text = document.createTextNode("Initials: " + nameScores[i] + " score: " + highScores[i])
+        tag.appendChild(text);
+        var element = document.getElementById("high_scores");
+        element.appendChild(tag);
+    }
+
 }
 function loadHS()
 {
@@ -183,11 +176,25 @@ function submitHS()
 {
     //can't get the push to array to work
     loadHS()
-    var name = document.getElementById("initials").value;
+    var names = document.getElementById("initials").value;
     console.log(score)
-    console.log(name)
-    highScores.push('score');
-    nameScores.push('name');
+    console.log(names)
+    if (highScores == null)
+    {
+        highScores.push(score);
+        nameScores.push(names);
+    }
+    else
+    {
+        var newScores = [score];
+        var newNames = [names];
+        var combinedScores = highScores.concat(newScores);
+        var combinedNames = nameScores.concat(newNames);
+        console.log(combinedNames)
+        console.log(combinedScores)
+        highScores = combinedScores;
+        nameScores = combinedNames; 
+    }
     localStorage.setItem("high-score", JSON.stringify(highScores));
     localStorage.setItem("name-score", JSON.stringify(nameScores));
 }
