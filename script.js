@@ -150,14 +150,14 @@ function final_score()
 function printHS()
 {
     loadHS()
-    for (var i = 0; i < highScores.length; i++)
-    {
-        var tag = document.createElement("p")
-        var text = document.createTextNode("Initials: " + nameScores[i] + " score: " + highScores[i])
-        tag.appendChild(text);
-        var element = document.getElementById("high_scores");
-        element.appendChild(tag);
-    }
+    // for (var i = 0; i < highScores.length; i++)
+    // {
+    //     var tag = document.createElement("p")
+    //     var text = document.createTextNode("Initials: " + nameScores[i] + " score: " + highScores[i])
+    //     tag.appendChild(text);
+    //     var element = document.getElementById("high_scores");
+    //     element.appendChild(tag);
+    // }
 
 }
 function loadHS()
@@ -174,7 +174,6 @@ function loadHS()
 }
 function submitHS()
 {
-    //can't get the push to array to work
     loadHS()
     var names = document.getElementById("initials").value;
     console.log(score)
